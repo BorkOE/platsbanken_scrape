@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 import os
 from excel_printer import Printer
-from settings import söktexter, URL, BASLÄNK, excel_path, minne_path, color_dict
+from settings import söktexter, URL, BASLÄNK, excel_path, minne_path, color_dict, column_width
 
 def get_ads(söktext):
     payload = {"filters":[
@@ -87,8 +87,7 @@ write_id_to_memory(res)
 
 # Print
 printer = Printer(excel_path)
-printer.append(res, 'jobb', {'A':4, 'B':10, 'C': 40, 'D':30, 'E': 15, 
-                             'F': 35, 'G':8, 'H:I':15, 'J':20, 'K':30}, 
+printer.append(res, 'jobb', column_width, 
                 index=False, wrap_values=True,
                 hyperlink_cols=['K'],
                 color_dict=color_dict
